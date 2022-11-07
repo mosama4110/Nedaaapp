@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\NotificationRecieved;
 use App\Models\callstd;
 use App\Models\student;
 use Illuminate\Http\Request;
@@ -45,7 +44,6 @@ class CallstdController extends Controller
     {
       $id = $request->rfid;
       $student= student::all()->where('rfid', $id);
-        event(new NotificationRecieved($student->toArray()));
       return view('callstd.callstd',compact('student'));
     }
 

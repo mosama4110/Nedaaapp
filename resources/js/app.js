@@ -6,12 +6,8 @@
 
 require('./bootstrap');
 
-// window.Vue = require('vue').default;
-import { createApp } from 'vue'
-import Toaster from "@meforma/vue-toaster";
+window.Vue = require('vue').default;
 
-import ExampleComponent from './components/ExampleComponent.vue'
-import ReciverComponent from './components/ReciverComponent.vue'
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -23,17 +19,14 @@ import ReciverComponent from './components/ReciverComponent.vue'
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-const app = createApp({})
-app.component('ExampleComponent', ExampleComponent);
-app.component('ReciverComponent', ReciverComponent);
-app.use(Toaster, {
-    position: "bottom-right",
-});
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-app.mount('#app')
 
+const app = new Vue({
+    el: '#app',
+});

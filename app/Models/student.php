@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,16 +13,16 @@ class student extends Model
     /*المرحلة التعليمية*/
     public function recip()
     {
-        return $this->belongsTo(recipients::class, 'recipients_id');
+    return $this->belongsTo(recipients::class,'recipients_id');
     }
-    /* المدرسة*/
+      /* المدرسة*/
     public function school()
     {
-        return $this->belongsTo(schools::class, 'school_id');
+    return $this->belongsTo(schools::class,'school_id');
     }
     /* الصف*/
-    public function map_size()
-    {
-        return $this->belongsTo(map_sizes::class, 'class_id');
-    }
+  public function map_size()
+  {
+  return $this->belongsTo(map_sizes::class,'class_id');
+  }
 }

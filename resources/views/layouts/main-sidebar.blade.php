@@ -44,7 +44,6 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ url('/' . $page='student') }}">إدارة الطلاب</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='call') }}">نداء الطلاب</a></li>
-							<li><a class="slide-item" href="{{ route('std.recive') }}">الندائات</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='darggablecards') }}">اذونات الطلاب</a></li>
 						</ul>
 						<li class="slide">
