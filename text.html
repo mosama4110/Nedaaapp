@@ -1,0 +1,56 @@
+import talkify from '@talkify';
+export default {
+    data() {
+        return {
+            data: [],
+        }
+    },
+    watch: {
+        data: {
+            handler: function (newValue) {
+                this.scroll()
+            },
+            deep: true
+        }
+    },
+    methods: {
+        scroll() {
+            setTimeout(function () {
+                let elmnt = document.getElementById('top');
+                elmnt.scrollIntoView(false);
+            }, 100);
+        }
+    },
+    mounted() {
+        window.Echo.channel("rfid").listen('NotificationRecieved', event => {
+
+            // player.config = {
+            //     ui:
+            //     {
+            //         audioControls: { //disable to provide your own player or use Talkify headless.
+            //             enabled: true,
+            //             controlcenter: "local", //["modern", "classic", "local", "native"]
+            //             container: document.body,
+            //             voicepicker: {
+            //                 enabled: true, //Applicable on modern and classic control centers
+            //                 filter: {
+            //                     byClass: ["Exclusive"], //Not applicable for Html5Player,  example: ["Standard", "Premium", "Exclusive", "Neural"]
+            //                     byCulture: ["ar-SA"], //example: ["en-EN", "en-AU"]
+            //                     byLanguage: ['Arabic'] //Not applicable for Html5Player, example: ["English", "Spanish"]
+            //                 }
+            //             }
+            //         }
+            //     },
+            // };
+
+
+            const talkify = window.talkify;
+            const player = new window.talkify.Html5Player();
+            player.forceLanguage('en-UK');
+            this.data.push(event.data)
+            setTimeout(function () {
+                player.playText('The Student Name is '+ event.data.student_nameen);
+            }, 500);
+        })
+    }
+}
