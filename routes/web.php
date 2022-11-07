@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('callstdsview', function(){
-    return view('callstd.callstd');
-})->name('std.recive');
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -36,4 +33,3 @@ Route::resource('/student',  'App\Http\Controllers\StudentController');
 Route::resource('/call',  'App\Http\Controllers\CallstdController');
 Route::resource('/cal_std',  'App\Http\Controllers\CallstdController@call');
 Route::get('/{page}',  'App\Http\Controllers\AdminController@index');
-

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\RFID;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('recive-rfid',[RFID::class,'sendRfid']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
